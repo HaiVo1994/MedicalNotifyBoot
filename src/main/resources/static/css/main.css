@@ -1,0 +1,97 @@
+html, body{
+    height: 100%;
+}
+body{
+    background-image : url('/img/sky-space-dark-galaxy-2150.jpg');
+    background-color: #5a6268;
+}
+header{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+}
+nav{
+    z-index: 1000;
+}
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: floralwhite;
+    z-index: 1000;
+}
+#footer div div p.tittle{
+    font-size: x-large;
+    color: antiquewhite;
+    font-weight: bold;
+}
+#main{
+    position: absolute;
+    background-color: whitesmoke;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /*overflow-y: scroll;*/
+    /*overflow-x: visible;*/
+    /*padding-top: 2%;*/
+    /*padding-bottom: 2%;*/
+    z-index: 100;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 1%;
+    height:1%;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #8a8a8a;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #04979c;
+}
+
+#inside{
+    /*background-color: whitesmoke;*/
+    padding-top: 4%;
+    padding-bottom: 4%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+h1,h2,h3,h4,h5, button, .tittle, #pagingForTable{
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+h1,h2,h3,h4,h5{
+    color: rgba(45,41,101,0.9);
+}
+.declare_tittle{
+    font-weight: bold;
+    font-size: medium;
+}
+.main_label,.declare_tittle, p, small{
+    color: #1b1e21;
+}
+.main_label span{
+    color: red;
+}
+.test{
+    color: rgba(223,49,240,0.76);
+}

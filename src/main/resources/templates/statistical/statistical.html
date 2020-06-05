@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thống Kê</title>
+    <th:block th:replace="layout::cssAll"></th:block>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/Chart.min.css}"/>
+</head>
+<body>
+<header th:replace="layout::topBar"></header>
+<main role="main" class="container main-contain" id="main">
+    <div id="inside" class="container-fluid">
+        <div class="row text-center">
+            <h1>Thống Kê</h1>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 form-group">
+                    <label for="statistical_type">Thống Kê</label>
+                    <select class="select_search custom-select" id="statistical_type">
+                        <option value="bySymptomAmount">Số Người Có Cùng Số Lượng Triệu Chứng</option>
+                        <option value="bySymptomType">Số Người Mắc Triệu Chứng</option>
+                        <option value="byExposureAmount">Từng Tiếp Xúc Với Cùng Số Nguồn Bệnh</option>
+                        <option value="byExposureType">Số Người Từng Tiếp Xúc Với Loại Nguồn Bệnh</option>
+                        <option value="byEntry">Số Người Nhập Cảnh Theo Ngày</option>
+                    </select>
+                </div>
+            </div>
+            <form id="formStatistical">
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label for="beginDate">Từ Ngày</label>
+                        <input type="date" class="form-control" id="beginDate">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label for="endDate">Từ Ngày</label>
+                        <input type="date" class="form-control" id="endDate">
+                    </div>
+                </div>
+            </form>
+            <div class="row text-center">
+                <button type="button" class="btn btn-primary" onclick="draw()">Thống Kê</button>
+            </div>
+            <div class="row" id="locationOfChart">
+                <canvas id="statisticalChart" width="100%" height="50"></canvas>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<div class="modal fade" id="messengerErrorModal" tabindex="-1" role="dialog" aria-labelledby="errorTittle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorTittle">Không Có Dữ Liệu Để Vẽ Biểu Đồ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="modal_messenger_error" class="text-center">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="listPerson" tabindex="-1" role="dialog" aria-labelledby="listPerson_tittle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="listPerson_tittle">Không Có Dữ Liệu Để Vẽ Biểu Đồ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="tableForListPerson" class="text-center row">
+
+                </div>
+                <div class="row">
+                    <ul class="pagination" id="pagingForTable">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="layout::bottomBar"></footer>
+<th:block th:replace="layout::jsAll"></th:block>
+<script th:src="@{/js/chart/Chart.js}"></script>
+<script th:src="@{/js/web/statistical.js}"></script>
+<script>
+    $(document).ready(
+        function () {
+            statistical.setValidate();
+        }
+    );
+    function draw() {
+        if ($("#formStatistical").valid()){
+            var typeStatical = $("#statistical_type").val();
+            switch (typeStatical) {
+                case "bySymptomAmount":
+                    statistical.getSymptom();
+                    break;
+                case "bySymptomType":
+                    statistical.getByTypeSymptom();
+                    break;
+                case "byExposureAmount":
+                    statistical.getExposure();
+                    break;
+                case "byExposureType":
+                    statistical.getByTypeExposure();
+                    break;
+                case "byEntry":
+                    statistical.getEntry();
+                    break;
+            }
+        }
+
+    }
+    // $("#statistical_type").change(
+    //     function () {
+    //         draw();
+    //     }
+    // );
+</script>
+</body>
+</html>
