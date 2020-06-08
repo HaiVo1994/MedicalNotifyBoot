@@ -8,12 +8,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "gate")
-@EnableAutoConfiguration
 public class Gate {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Short id;
-    @Column(length = 100)
     private String name;
     @OneToMany(mappedBy = "gate", fetch = FetchType.LAZY)
     @JsonIgnore

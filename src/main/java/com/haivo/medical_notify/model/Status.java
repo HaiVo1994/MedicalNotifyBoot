@@ -7,7 +7,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "status")
-@EnableAutoConfiguration
 public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

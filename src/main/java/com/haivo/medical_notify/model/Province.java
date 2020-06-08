@@ -8,12 +8,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "province")
-@EnableAutoConfiguration
 public class Province {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column(length = 150)
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)

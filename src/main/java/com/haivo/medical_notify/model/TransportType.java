@@ -8,7 +8,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "transport_type")
-@EnableAutoConfiguration
 public class TransportType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

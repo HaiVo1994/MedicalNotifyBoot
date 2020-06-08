@@ -10,16 +10,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "person")
-@EnableAutoConfiguration
 public class Person {
     @Id
-    @Column(length = 50)
     private String legalDocument;
-    @Column(length = 20)
     private String passport;
-    @ColumnDefault(value = "1")
     private boolean isEnabled;
-    @Column(length = 200)
     private String name;
     private short birthYear;
     private byte gender;
@@ -35,12 +30,9 @@ public class Person {
     @JsonIgnore
     private List<Entry> entries;
 
-    @Column(length = 200)
     private String createBy;
     private Date createAt;
-    @ColumnDefault(value = "0")
     private boolean isDelete;
-    @Column(length = 200)
     private String updateBy;
     private Date updateAt;
 

@@ -7,7 +7,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "history_of_exposure")
-@EnableAutoConfiguration
 public class HistoryOfExposure {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

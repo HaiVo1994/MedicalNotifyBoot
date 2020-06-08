@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "exposure")
-@EnableAutoConfiguration
 public class Exposure {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,15 +16,11 @@ public class Exposure {
     private String name;
 
     private Date disable_at;
-    @Column(length = 200)
     private String disable_by;
-    @ColumnDefault(value = "1")
     private boolean isEnabled;
     private Date create_at;
-    @Column(length = 200)
     private String create_by;
     private Date update_at;
-    @Column(length = 200)
     private String update_by;
 
     @OneToMany(mappedBy = "exposure", fetch = FetchType.LAZY)

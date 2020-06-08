@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "symptom")
-@EnableAutoConfiguration
 public class Symptom {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,7 +19,6 @@ public class Symptom {
     private Date disable_at;
     @Column(length = 200)
     private String disable_by;
-    @ColumnDefault(value = "1")
     private boolean isEnabled;
     private Date create_at;
     @Column(length = 200)

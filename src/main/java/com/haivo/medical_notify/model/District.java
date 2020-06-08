@@ -8,7 +8,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "district")
-@EnableAutoConfiguration
 public class District {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

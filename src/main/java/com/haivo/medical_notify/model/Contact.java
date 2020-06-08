@@ -9,12 +9,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "contact")
-@EnableAutoConfiguration
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(length = 200)
     private String name;
     @ManyToOne(fetch = FetchType.EAGER)
     private Person person;
@@ -22,7 +20,6 @@ public class Contact {
     @ManyToOne(fetch = FetchType.EAGER)
     private Ward location;
     private String address;
-    @Column(length = 20)
     private String phone;
     private String email;
 
@@ -30,15 +27,11 @@ public class Contact {
     private List<Entry> entries;
 
     private Date disable_at;
-    @Column(length = 200)
     private String disable_by;
-    @ColumnDefault(value = "1")
     private boolean isEnabled;
     private Date create_at;
-    @Column(length = 200)
     private String create_by;
     private Date update_at;
-    @Column(length = 200)
     private String update_by;
 
     public Contact() {
