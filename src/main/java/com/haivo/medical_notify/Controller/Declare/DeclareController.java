@@ -23,7 +23,7 @@ public class DeclareController {
     private GateService gateService;
     @Autowired
     private TransportTypeService transportTypeService;
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView declare(){
         ModelAndView modelAndView = new ModelAndView("declare/declare");
         Iterable<Gate> gates = gateService.findAll();
