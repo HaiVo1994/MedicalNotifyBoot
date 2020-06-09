@@ -376,7 +376,7 @@ declare.transportTypeChange = function(){
     if ($("#transportType").val() === flyTypeId) {
         transportNo.rules("add", "required");
         seatNo.rules("add", "required");
-        $("#transportFlySelected").html("*");
+        $("#transportFlySelected").html("(*)");
     }
     else {
         transportNo.rules("remove", "required");
