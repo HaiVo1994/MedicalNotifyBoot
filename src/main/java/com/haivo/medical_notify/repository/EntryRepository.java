@@ -36,6 +36,7 @@ public interface EntryRepository extends JpaRepository<Entry,String> {
             ") " +
             "FROM Entry e " +
             "WHERE (e.immigrationDate >= :startDate) AND (e.immigrationDate<= :endDate)" +
+            "GROUP BY e.person.name,e.id, e.immigrationDate " +
             "ORDER BY e.immigrationDate asc ")
     Page<Statistical_Person> getEntriesByImmigrationDate(
             @Param("startDate") Date begin,
