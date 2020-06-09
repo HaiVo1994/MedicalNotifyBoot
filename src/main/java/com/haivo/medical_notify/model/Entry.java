@@ -27,6 +27,7 @@ public class Entry {
     private Date departureDate;
     @NotNull
     private Date immigrationDate;
+    @Column(columnDefinition="TEXT")
     @NotNull
     private String placeTravel;
 
@@ -52,6 +53,7 @@ public class Entry {
     @OneToMany(mappedBy = "entry", fetch = FetchType.LAZY)
     @JsonIgnore
     private List< Status> statuses;
+    @Column(columnDefinition="TEXT")
     private String listCure;
 
     @OneToMany(mappedBy = "entry", fetch = FetchType.LAZY)
