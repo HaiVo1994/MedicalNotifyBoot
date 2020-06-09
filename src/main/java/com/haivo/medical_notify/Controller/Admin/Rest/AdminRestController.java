@@ -35,7 +35,7 @@ public class AdminRestController {
 
     @RequestMapping(value = "/province_create", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public List<Province> createProvince(@RequestBody JsonObject province) {
-        Short idNational = (Short) province.get("national");
+        Short idNational = Short.parseShort(String.valueOf(province.get("national"))) ;
         National national = nationalService.findById(idNational);
         String provinces = String.valueOf(province.get("provinces"));
         String[] listProvinceName = provinces.split(",");
@@ -51,7 +51,7 @@ public class AdminRestController {
 
     @RequestMapping(value = "/district_create", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public List<District> createDistrict(@RequestBody JsonObject district) {
-        Integer idProvince = (Integer) district.get("province");
+        Integer idProvince = Integer.parseInt(String.valueOf(district.get("province"))) ;
         Province province = provinceService.findById(idProvince);
         String districts = String.valueOf(district.get("provinces"));
         String[] listProvinceName = districts.split(",");
@@ -66,7 +66,7 @@ public class AdminRestController {
     private WardService wardService;
     @RequestMapping(value = "/ward_create", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public List<Ward> createWard(@RequestBody JsonObject ward) {
-        Long idDistrict = (Long) ward.get("district");
+        Long idDistrict = Long.parseLong(String.valueOf(ward.get("district"))) ;
         District district = districtService.findById(idDistrict);
         String wards = String.valueOf(ward.get("wards"));
         String[] listWardName = wards.split(",");
