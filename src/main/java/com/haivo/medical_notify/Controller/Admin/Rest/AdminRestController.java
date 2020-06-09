@@ -80,8 +80,8 @@ public class AdminRestController {
     @Autowired
     private SymptomService symptomService;
     @RequestMapping(value = "/symptom_create", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public List<Symptom> createSymptom(@RequestBody String symptomsName){
-        String[] symptomNameList = symptomsName.split(",");
+    public List<Symptom> createSymptom(@RequestBody JsonObject symptomsName){
+        String[] symptomNameList = String.valueOf(symptomsName.get("symptomsName")).split(",");
         List<Symptom> symptoms = new ArrayList<>();
         for (String symptomName: symptomNameList){
             symptoms.add(symptomService.create(symptomName));
@@ -92,8 +92,8 @@ public class AdminRestController {
     @Autowired
     private ExposureService exposureService;
     @RequestMapping(value = "/exposure_create", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public List<Exposure> createExposure(@RequestBody String exposuresName){
-        String[] exposureNameList = exposuresName.split(",");
+    public List<Exposure> createExposure(@RequestBody JsonObject exposuresName){
+        String[] exposureNameList = String.valueOf(exposuresName.get("exposuresName")).split(",");
         List<Exposure> exposures = new ArrayList<>();
         for (String exposureName: exposureNameList){
             exposures.add(exposureService.create(exposureName));
