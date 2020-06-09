@@ -33,15 +33,15 @@ public class EntryServiceImpl implements EntryService {
 
     @Override
     public Entry create(Entry entry) {
-        Date today = new Date();
-        entry.setCreateAt(today);
-        String id = entry.getId();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
-
-        id += dateFormat.format(today);
-        entry.setId(id);
-        if (this.findById(id)!=null)
-            return null;
+        entry.setCreateAt(new Date());
+//        String id = entry.getId();
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
+//
+//        id += dateFormat.format(entry.getImmigrationDate());
+//        entry.setId(id);
+//        Entry check = this.findById(id);
+//        if (check!=null)
+//            return null;
         return entryRepository.save(entry);
     }
 
@@ -79,6 +79,7 @@ public class EntryServiceImpl implements EntryService {
                 String date = (String)jsonEntry.get("departureDate");
                 entry.setDepartureDate(dateFormat.parse(date));
                 date = (String) jsonEntry.get("immigrationDate");
+                entry.setId(entry.getId() + date);
                 entry.setImmigrationDate(dateFormat.parse(date));
                 entry.setPlaceTravel((String) jsonEntry.get("placeTravel"));
                 Province provinceDeparture =
@@ -92,7 +93,12 @@ public class EntryServiceImpl implements EntryService {
                 entry.setProvinceDestination(provinceDestination);
                 entry.setPerson(person);
                 entry.setListCure((String) jsonEntry.get("listCure"));
-                return this.create(entry);
+                if (this.findById(entry.getId())!=null){
+                    return null;
+                }
+                else {
+                    return this.create(entry);
+                }
             } catch (ParseException e) {
                 e.printStackTrace();
                 System.out.println("Lỗi Chuyển Đổi Ngày :");

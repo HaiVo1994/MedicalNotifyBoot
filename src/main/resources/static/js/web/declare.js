@@ -422,8 +422,14 @@ declare.sendDeclare = function () {
         data: JSON.stringify(declareData)
     }).done(
         function (data) {
-            console.log(data.messenger);
-            $("#messengerSuccess").modal("show");
+            if (data.result==="success"){
+                console.log(data.messenger);
+                $("#messengerSuccess").modal("show");
+            }
+            else {
+                $("#modal_messenger_error").html(data.messenger);
+                $("#messengerErrorModal").modal("show");
+            }
         }
     ).fail(
         function (data) {

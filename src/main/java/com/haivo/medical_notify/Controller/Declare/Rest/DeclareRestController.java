@@ -39,26 +39,33 @@ public class DeclareRestController {
         List<LinkedHashMap<String,String>> statusJsonList = (ArrayList<LinkedHashMap<String,String>>) declare.get("status");
         List<LinkedHashMap<String,String>> historyJsonList = (ArrayList<LinkedHashMap<String,String>>) declare.get("historyOfExposures");
         Person person = personService.declare(personData);
+        result.put("result", "fail");
         if (person==null){
             result.put("messenger","Tạo Hồ Sơ Người Dùng Thất Bại");
+            return result;
         }
         Contact contact = contactService.change(contactData, person);
         Transport transport = transportService.create(transportData);
         if (transport == null) {
             result.put("messenger", "Tạo Phương Tiện Nhập Cảnh Thất Bại");
+            return result;
         }
         Entry entry = entryService.create(entryData,person,transport);
         if (entry==null){
            result.put("messenger", "Tạo Tờ Khai Nhập Cảnh Thất Bại");
+            return result;
         }
         List<Status> statusList = statusService.declare(statusJsonList, entry);
         if (statusList==null){
             result.put("messenger", "Tạo Tờ Khai Báo Sức Khỏe Thất Bại");
+            return result;
         }
         List<HistoryOfExposure> historyOfExposureList = historyOfExposureService.declare(historyJsonList, entry);
         if (historyOfExposureList==null){
             result.put("messenger", "Tạo Tờ Khai Báo Tiếp Xúc Thất Bại");
+            return result;
         }
+        result.put("result", "success");
         result.put("messenger", "Khai Báo Thành Công");
         return result;
     }
