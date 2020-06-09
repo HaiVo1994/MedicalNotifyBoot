@@ -34,7 +34,7 @@ public interface HistoryOfExposureRepository extends JpaRepository<HistoryOfExpo
             "h.entry.immigrationDate ,SUM(CASE h.hasExposure WHEN true THEN 1 ELSE 0 END)) " +
             "FROM HistoryOfExposure h " +
             "WHERE h.entry.immigrationDate >= :beginDate AND h.entry.immigrationDate< :endDate " +
-            "GROUP BY h.entry " +
+            "GROUP BY h.entry.person.name,h.entry.id,h.entry.immigrationDate " +
             "ORDER BY h.entry.immigrationDate")
     List<Statistical_Person> getListPersonByAmountExposure(@Param("beginDate")Date begin, @Param("endDate") Date end);
 
@@ -42,7 +42,7 @@ public interface HistoryOfExposureRepository extends JpaRepository<HistoryOfExpo
             "SUM(CASE h.hasExposure WHEN true THEN 1 ELSE 0 END)) " +
             "FROM HistoryOfExposure h " +
             "WHERE h.entry.immigrationDate >= :beginDate AND h.entry.immigrationDate< :endDate " +
-            "GROUP BY h.exposure")
+            "GROUP BY h.exposure.name")
     List<Statistical> statisticalByTypeExposure(@Param("beginDate")Date begin, @Param("endDate") Date end);
 
     @Query("SELECT new  com.haivo.medical_notify.model.support.Statistical_Person(" +

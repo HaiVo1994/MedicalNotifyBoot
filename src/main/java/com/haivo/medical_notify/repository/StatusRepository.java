@@ -29,14 +29,14 @@ public interface StatusRepository extends JpaRepository<Status, Long> {
             "SUM(CASE s.haveSymptom WHEN true THEN 1 ELSE 0 END))" +
             "FROM Status s " +
             "WHERE s.entry.immigrationDate >= :startDate AND s.entry.immigrationDate <= :endDate " +
-            "GROUP BY s.symptom")
+            "GROUP BY s.symptom.name")
     List<Statistical> countForSymptomType(@Param("startDate") Date begin, @Param("endDate") Date end);
 
     @Query("SELECT new  com.haivo.medical_notify.model.support.Statistical_Person(s.entry.person.name,s.entry.id, " +
             "s.entry.immigrationDate, SUM(CASE s.haveSymptom WHEN true THEN 1 ELSE 0 END)) " +
             "FROM Status s " +
             "WHERE s.entry.immigrationDate >= :startDate AND s.entry.immigrationDate<= :endDate " +
-            "GROUP BY s.entry " +
+            "GROUP BY s.entry.person.name,s.entry.id,s.entry.immigrationDate " +
             "ORDER BY s.entry.immigrationDate")
     List<Statistical_Person> getListPersonByAmountSymptom(@Param("startDate") Date begin,
                                                           @Param("endDate") Date end);
