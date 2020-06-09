@@ -10,4 +10,5 @@ public interface WardService {
     List<Ward> findByDistrict(Long id);
     List<Ward> findByDistrict(District district);
     Ward findById(Long id);
+    Ward create(String wardName, District district);
 }

@@ -40,4 +40,12 @@ public class DistrictServiceImpl implements DistrictService {
     public District findById(Long id) {
         return districtRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public District create(String districtName, Province province) {
+        District district = new District();
+        district.setName(districtName);
+        district.setProvince(province);
+        return districtRepository.save(district);
+    }
 }

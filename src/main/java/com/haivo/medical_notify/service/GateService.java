@@ -12,4 +12,5 @@ public interface GateService {
     List<HashMap<String,Long>> countPersonEntry(Date begin, Date end);
     List<HashMap<String,Long>> countPersonSymptom(Date begin, Date end);
     List<HashMap<String,Long>> countPersonExposure(Date begin, Date end);
+    Gate save(Gate gate);
 }

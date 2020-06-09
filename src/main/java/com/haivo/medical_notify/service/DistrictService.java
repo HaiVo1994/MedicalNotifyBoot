@@ -10,4 +10,5 @@ public interface DistrictService {
     List<District> findByProvince(Integer id);
     List<District> findByProvince(Province province);
     District findById(Long id);
+    District create(String districtName, Province province);
 }

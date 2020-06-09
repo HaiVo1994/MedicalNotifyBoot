@@ -26,6 +26,14 @@ public class ProvinceServiceImpl  implements ProvinceService {
     }
 
     @Override
+    public Province create(String provinceName, National national) {
+        Province province = new Province();
+        province.setName(provinceName);
+        province.setNational(national);
+        return provinceRepository.save(province);
+    }
+
+    @Override
     public List<Province> findAllByNational(Short idNational) {
         National national = nationalService.findById(idNational);
         return this.findAllByNational(national);

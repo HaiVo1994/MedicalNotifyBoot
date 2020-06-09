@@ -33,6 +33,14 @@ public class SymptomServiceImpl implements SymptomService {
     }
 
     @Override
+    public Symptom create(String symptomName) {
+        Symptom symptom = new Symptom();
+        symptom.setName(symptomName);
+        symptom.setEnabled(true);
+        return symptomRepository.save(symptom);
+    }
+
+    @Override
     public List<Symptom> findAllEnable() {
         return symptomRepository.getAllEnabled();
     }

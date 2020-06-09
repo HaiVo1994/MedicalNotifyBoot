@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface ProvinceService {
     Province findById(Integer id);
+    Province create(String provinceName, National national);
     List<Province> findAllByNational(Short idNational);
     List<Province> findAllByNational(National national);
     List<HashMap<String,Long>> countPerSonByDeparture(Date begin, Date end);

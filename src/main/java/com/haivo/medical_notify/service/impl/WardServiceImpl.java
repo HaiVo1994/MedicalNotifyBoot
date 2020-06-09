@@ -41,4 +41,12 @@ public class WardServiceImpl implements WardService {
     public Ward findById(Long id) {
         return wardRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public Ward create(String wardName, District district) {
+        Ward ward = new Ward();
+        ward.setName(wardName);
+        ward.setDistrict(district);
+        return wardRepository.save(ward);
+    }
 }

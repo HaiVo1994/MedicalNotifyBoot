@@ -32,6 +32,14 @@ public class ExposureServiceImpl implements ExposureService {
     }
 
     @Override
+    public Exposure create(String exposureName) {
+        Exposure exposure = new Exposure();
+        exposure.setName(exposureName);
+        exposure.setEnabled(true);
+        return exposureRepository.save(exposure);
+    }
+
+    @Override
     public List<Exposure> findAllEnable() {
         return exposureRepository.getAllEnabled();
     }

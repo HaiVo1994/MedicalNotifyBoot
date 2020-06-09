@@ -40,4 +40,9 @@ public class GateServiceImpl implements GateService {
     public List<HashMap<String, Long>> countPersonExposure(Date begin, Date end) {
         return null;
     }
+
+    @Override
+    public Gate save(Gate gate) {
+        return gateRepository.save(gate);
+    }
 }

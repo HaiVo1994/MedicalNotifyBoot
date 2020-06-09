@@ -18,6 +18,11 @@ public class NationalServiceImpl implements NationalService {
     }
 
     @Override
+    public National save(National national) {
+        return nationalRepository.save(national);
+    }
+
+    @Override
     public National findById(Short id) {
         return nationalRepository.findById(id).orElse(null);
     }
