@@ -26,7 +26,7 @@ public class AdminRestController {
 
     @RequestMapping(value = "/national_create", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 
-    public National createNational(National national) {
+    public National createNational(@RequestBody National national) {
         return nationalService.save(national);
     }
 
@@ -34,7 +34,7 @@ public class AdminRestController {
     private ProvinceService provinceService;
 
     @RequestMapping(value = "/province_create", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public List<Province> createProvince(JsonObject province) {
+    public List<Province> createProvince(@RequestBody JsonObject province) {
         Short idNational = (Short) province.get("national");
         National national = nationalService.findById(idNational);
         String provinces = String.valueOf(province.get("provinces"));
@@ -50,7 +50,7 @@ public class AdminRestController {
     private DistrictService districtService;
 
     @RequestMapping(value = "/district_create", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public List<District> createDistrict(JsonObject district) {
+    public List<District> createDistrict(@RequestBody JsonObject district) {
         Integer idProvince = (Integer) district.get("province");
         Province province = provinceService.findById(idProvince);
         String districts = String.valueOf(district.get("provinces"));
@@ -65,7 +65,7 @@ public class AdminRestController {
     @Autowired
     private WardService wardService;
     @RequestMapping(value = "/ward_create", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public List<Ward> createWard(JsonObject ward) {
+    public List<Ward> createWard(@RequestBody JsonObject ward) {
         Long idDistrict = (Long) ward.get("district");
         District district = districtService.findById(idDistrict);
         String wards = String.valueOf(ward.get("wards"));
@@ -80,7 +80,7 @@ public class AdminRestController {
     @Autowired
     private SymptomService symptomService;
     @RequestMapping(value = "/symptom_create", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public List<Symptom> createSymptom(String symptomsName){
+    public List<Symptom> createSymptom(@RequestBody String symptomsName){
         String[] symptomNameList = symptomsName.split(",");
         List<Symptom> symptoms = new ArrayList<>();
         for (String symptomName: symptomNameList){
@@ -92,7 +92,7 @@ public class AdminRestController {
     @Autowired
     private ExposureService exposureService;
     @RequestMapping(value = "/exposure_create", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public List<Exposure> createExposure(String exposuresName){
+    public List<Exposure> createExposure(@RequestBody String exposuresName){
         String[] exposureNameList = exposuresName.split(",");
         List<Exposure> exposures = new ArrayList<>();
         for (String exposureName: exposureNameList){
