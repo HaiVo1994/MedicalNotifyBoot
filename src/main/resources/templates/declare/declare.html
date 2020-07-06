@@ -223,14 +223,6 @@
                                     <tr th:each="symptom:${symptoms}">
                                         <td th:text="${symptom.name}">
                                         </td>
-<!--                                        <td>-->
-<!--                                            <input type="radio" class="form-check-input symptom_checkbox"-->
-<!--                                                   th:name="${'symptom:' + symptom.id}" th:value="${symptom.id + ',:,1'}">-->
-<!--                                        </td>-->
-<!--                                        <td>-->
-<!--                                            <input type="radio" class="form-check-input symptom_checkbox"-->
-<!--                                                   th:name="${'symptom:' + symptom.id}" th:value="${symptom.id + ',:,0'}">-->
-<!--                                        </td>-->
                                         <td>
                                             <div class="option">
                                                 <input type="radio" class="symptom_checkbox"
@@ -239,25 +231,6 @@
                                                 <label th:for="${'symptom-y:' + symptom.id}" aria-label="Dark grey">
                                                     <span></span>
                                                     Có
-                                                    <div class="card card--dark card--sm">
-                                                        <div class="card__chip"></div>
-                                                        <div class="card__content">
-                                                            <div class="card__text">
-                                                                <div class="text__row">
-                                                                    <div class="text__loader"></div>
-                                                                    <div class="text__loader"></div>
-                                                                </div>
-                                                                <div class="text__row">
-                                                                    <div class="text__loader"></div>
-                                                                    <div class="text__loader"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="card__symbol">
-                                                                <span></span>
-                                                                <span></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </label>
                                             </div>
                                         </td>
@@ -270,28 +243,7 @@
                                                        th:id="${'symptom-n:' + symptom.id}">
                                                 <label th:for="${'symptom-n:' + symptom.id}" aria-label="Royal blue">
                                                     <span></span>
-
                                                     Không
-
-                                                    <div class="card card--blue card--sm">
-                                                        <div class="card__chip"></div>
-                                                        <div class="card__content">
-                                                            <div class="card__text">
-                                                                <div class="text__row">
-                                                                    <div class="text__loader"></div>
-                                                                    <div class="text__loader"></div>
-                                                                </div>
-                                                                <div class="text__row">
-                                                                    <div class="text__loader"></div>
-                                                                    <div class="text__loader"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="card__symbol">
-                                                                <span></span>
-                                                                <span></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </label>
                                             </div>
                                         </td>
@@ -323,14 +275,6 @@
                                     <tr th:each="exposure:${exposures}">
                                         <td th:text="${exposure.name}">
                                         </td>
-<!--                                        <td>-->
-<!--                                            <input type="radio" class="form-check-input exposure_checkbox"-->
-<!--                                                   th:name="${'exposure:' + exposure.id}" th:value="${exposure.id + ',:,1'}">-->
-<!--                                        </td>-->
-<!--                                        <td>-->
-<!--                                            <input type="radio" class="form-check-input exposure_checkbox"-->
-<!--                                                   th:name="${'exposure:' + exposure.id}" th:value="${exposure.id + ',:,0'}">-->
-<!--                                        </td>-->
                                         <td>
                                             <div class="option">
                                                 <input type="radio" class="exposure_checkbox"
@@ -339,25 +283,6 @@
                                                 <label th:for="${'exposure-y:' + exposure.id}" aria-label="Dark grey">
                                                     <span></span>
                                                     Có
-                                                    <div class="card card--dark card--sm">
-                                                        <div class="card__chip"></div>
-                                                        <div class="card__content">
-                                                            <div class="card__text">
-                                                                <div class="text__row">
-                                                                    <div class="text__loader"></div>
-                                                                    <div class="text__loader"></div>
-                                                                </div>
-                                                                <div class="text__row">
-                                                                    <div class="text__loader"></div>
-                                                                    <div class="text__loader"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="card__symbol">
-                                                                <span></span>
-                                                                <span></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </label>
                                             </div>
                                         </td>
@@ -370,28 +295,7 @@
                                                        th:id="${'exposure-n:' + exposure.id}">
                                                 <label th:for="${'exposure-n:' + exposure.id}" aria-label="Royal blue">
                                                     <span></span>
-
                                                     Không
-
-                                                    <div class="card card--blue card--sm">
-                                                        <div class="card__chip"></div>
-                                                        <div class="card__content">
-                                                            <div class="card__text">
-                                                                <div class="text__row">
-                                                                    <div class="text__loader"></div>
-                                                                    <div class="text__loader"></div>
-                                                                </div>
-                                                                <div class="text__row">
-                                                                    <div class="text__loader"></div>
-                                                                    <div class="text__loader"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="card__symbol">
-                                                                <span></span>
-                                                                <span></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </label>
                                             </div>
                                         </td>
